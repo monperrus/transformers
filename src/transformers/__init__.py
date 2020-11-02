@@ -29,6 +29,7 @@ from .integrations import (  # isort:skip
 
 # Configurations
 from .configuration_albert import ALBERT_PRETRAINED_CONFIG_ARCHIVE_MAP, AlbertConfig
+from .configuration_summarize_from_feedback import SUMMARIZE_FROM_FEEDBACK_PRETRAINED_CONFIG_ARCHIVE_MAP, SummarizeFromFeedbackConfig
 from .configuration_auto import ALL_PRETRAINED_CONFIG_ARCHIVE_MAP, CONFIG_MAPPING, AutoConfig
 from .configuration_bart import BartConfig
 from .configuration_bert import BERT_PRETRAINED_CONFIG_ARCHIVE_MAP, BertConfig
@@ -275,6 +276,19 @@ logger = logging.get_logger(__name__)  # pylint: disable=invalid-name
 
 # Modeling
 if is_torch_available():
+
+    from .modeling_summarize_from_feedback import (
+        SUMMARIZE_FROM_FEEDBACK_PRETRAINED_MODEL_ARCHIVE_LIST,
+        SummarizeFromFeedbackForMaskedLM,
+        SummarizeFromFeedbackForMultipleChoice,
+        SummarizeFromFeedbackForQuestionAnswering,
+        SummarizeFromFeedbackForSequenceClassification,
+        SummarizeFromFeedbackForTokenClassification,
+        SummarizeFromFeedbackLayer,
+        SummarizeFromFeedbackModel,
+        SummarizeFromFeedbackPreTrainedModel,
+        load_tf_weights_in_summarize_from_feedback,
+    )
     # Benchmarks
     from .benchmark.benchmark import PyTorchBenchmark
     from .benchmark.benchmark_args import PyTorchBenchmarkArguments
@@ -615,6 +629,18 @@ else:
 
 # TensorFlow
 if is_tf_available():
+
+    from .modeling_tf_summarize_from_feedback import (
+        TF_SUMMARIZE_FROM_FEEDBACK_PRETRAINED_MODEL_ARCHIVE_LIST,
+        TFSummarizeFromFeedbackForMaskedLM,
+        TFSummarizeFromFeedbackForMultipleChoice,
+        TFSummarizeFromFeedbackForQuestionAnswering,
+        TFSummarizeFromFeedbackForSequenceClassification,
+        TFSummarizeFromFeedbackForTokenClassification,
+        TFSummarizeFromFeedbackLayer,
+        TFSummarizeFromFeedbackModel,
+        TFSummarizeFromFeedbackPreTrainedModel,
+    )
     from .benchmark.benchmark_args_tf import TensorFlowBenchmarkArguments
 
     # Benchmarks

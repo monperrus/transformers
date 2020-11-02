@@ -19,6 +19,7 @@ import warnings
 from collections import OrderedDict
 
 from .configuration_auto import (
+    SummarizeFromFeedbackConfig,
     AlbertConfig,
     AutoConfig,
     BartConfig,
@@ -224,12 +225,22 @@ from .utils import logging
 
 # Add modeling imports here
 
+from .modeling_summarize_from_feedback import (
+    SummarizeFromFeedbackForMaskedLM,
+    SummarizeFromFeedbackForMultipleChoice,
+    SummarizeFromFeedbackForQuestionAnswering,
+    SummarizeFromFeedbackForSequenceClassification,
+    SummarizeFromFeedbackForTokenClassification,
+    SummarizeFromFeedbackModel,
+)
+
 logger = logging.get_logger(__name__)
 
 
 MODEL_MAPPING = OrderedDict(
     [
         # Base model mapping
+        (SummarizeFromFeedbackConfig, SummarizeFromFeedbackModel),
         (RetriBertConfig, RetriBertModel),
         (T5Config, T5Model),
         (DistilBertConfig, DistilBertModel),
@@ -295,6 +306,7 @@ MODEL_FOR_PRETRAINING_MAPPING = OrderedDict(
 MODEL_WITH_LM_HEAD_MAPPING = OrderedDict(
     [
         # Model with LM heads mapping
+(SummarizeFromFeedbackConfig, SummarizeFromFeedbackForMaskedLM),
         (LayoutLMConfig, LayoutLMForMaskedLM),
         (T5Config, T5ForConditionalGeneration),
         (DistilBertConfig, DistilBertForMaskedLM),
@@ -349,6 +361,7 @@ MODEL_FOR_CAUSAL_LM_MAPPING = OrderedDict(
 MODEL_FOR_MASKED_LM_MAPPING = OrderedDict(
     [
         # Model for Masked LM mapping
+(SummarizeFromFeedbackConfig, SummarizeFromFeedbackForMaskedLM),
         (LayoutLMConfig, LayoutLMForMaskedLM),
         (DistilBertConfig, DistilBertForMaskedLM),
         (AlbertConfig, AlbertForMaskedLM),
@@ -387,6 +400,7 @@ MODEL_FOR_SEQ_TO_SEQ_CAUSAL_LM_MAPPING = OrderedDict(
 MODEL_FOR_SEQUENCE_CLASSIFICATION_MAPPING = OrderedDict(
     [
         # Model for Sequence Classification mapping
+        (SummarizeFromFeedbackConfig, SummarizeFromFeedbackForSequenceClassification),
         (DistilBertConfig, DistilBertForSequenceClassification),
         (AlbertConfig, AlbertForSequenceClassification),
         (CamembertConfig, CamembertForSequenceClassification),
@@ -411,6 +425,7 @@ MODEL_FOR_SEQUENCE_CLASSIFICATION_MAPPING = OrderedDict(
 MODEL_FOR_QUESTION_ANSWERING_MAPPING = OrderedDict(
     [
         # Model for Question Answering mapping
+        (SummarizeFromFeedbackConfig, SummarizeFromFeedbackForQuestionAnswering),
         (DistilBertConfig, DistilBertForQuestionAnswering),
         (AlbertConfig, AlbertForQuestionAnswering),
         (CamembertConfig, CamembertForQuestionAnswering),
@@ -433,6 +448,7 @@ MODEL_FOR_QUESTION_ANSWERING_MAPPING = OrderedDict(
 MODEL_FOR_TOKEN_CLASSIFICATION_MAPPING = OrderedDict(
     [
         # Model for Token Classification mapping
+(SummarizeFromFeedbackConfig, SummarizeFromFeedbackForTokenClassification),
         (LayoutLMConfig, LayoutLMForTokenClassification),
         (DistilBertConfig, DistilBertForTokenClassification),
         (CamembertConfig, CamembertForTokenClassification),
@@ -455,6 +471,7 @@ MODEL_FOR_TOKEN_CLASSIFICATION_MAPPING = OrderedDict(
 MODEL_FOR_MULTIPLE_CHOICE_MAPPING = OrderedDict(
     [
         # Model for Multiple Choice mapping
+(SummarizeFromFeedbackConfig, SummarizeFromFeedbackForMultipleChoice),
         (CamembertConfig, CamembertForMultipleChoice),
         (ElectraConfig, ElectraForMultipleChoice),
         (XLMRobertaConfig, XLMRobertaForMultipleChoice),
